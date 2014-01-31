@@ -15,4 +15,4 @@ depends 'php', '~> 1.2.0' # https://github.com/opscode-cookbooks/php
 depends 'php-fpm'         # https://github.com/yevgenko/cookbook-php-fpm
 depends 'composer'        # https://github.com/escapestudios/chef-composer
 depends 'nfs'             # https://github.com/atomic-penguin/cookbook-nfs
-depends 'rvm'             # https://github.com/fnichol/chef-rvm
+depends 'rvm', '~> 0.9.0' # https://github.com/fnichol/chef-rvm
