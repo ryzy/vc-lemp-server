@@ -12,4 +12,5 @@ nfs_export '/var/www' do
   writeable true
   sync false
   options ['all_squash', 'anonuid=80', 'anongid=80']
+  not_if "grep '/var/www' /etc/exports"
 end

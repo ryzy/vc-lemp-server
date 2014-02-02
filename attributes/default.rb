@@ -12,10 +12,12 @@ default[:system][:composer_env] = {
 }
 
 # PHP: user/group
-default[:app][:group] = "www-data"
-default[:app][:user] = "www-data"
+default['app']['group'] = "www-data"
+default['app']['user'] = "www-data"
 # PHP-FPM sock path - see cookbook php-fpm/templates/default/pool.conf.erb
-default[:app][:php_socket] = '/var/run/php-fpm-www.sock'
+default['app']['php_socket'] = '/var/run/php-fpm-www.sock'
+# MySQL host name
+default['app']['mysql_host'] = '127.0.0.1'
 
 #
 # MySQL settings
@@ -46,6 +48,13 @@ default['mysql']['tunable']['read_rnd_buffer_size'] = '8M'
 default['mysql']['tunable']['join_buffer_size']     = '1M'
 default['mysql']['tunable']['tmp_table_size']       = '64M'
 default['mysql']['tunable']['max_heap_table_size']  = node['mysql']['tunable']['tmp_table_size']
+
+# MySQL connection info to use with 'mysql' recipe
+default['app']['mysql_connection_info'] = {
+  :username => 'root',
+  :password => node['mysql']['server_root_password'],
+  :host     => node['app']['mysql_host']
+}
 
 
 #
