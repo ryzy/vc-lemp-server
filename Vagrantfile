@@ -7,9 +7,9 @@ Vagrant.configure("2") do |config|
   
   config.vm.hostname = "vc-lemp-server"
   
-  # Rackspace, DigitalOcean use their own boxes - but Vagrant need these values to be set
- config.vm.box = 'dummy'
- config.vm.box_url = 'https://github.com/ryzy/vc-lemp-server/blob/master/dummy.box?raw=true'
+  # In global config provide just dummy box - all providers use their own boxes and needs to be overriden
+  config.vm.box = 'dummy'
+  config.vm.box_url = 'https://github.com/ryzy/vc-lemp-server/blob/master/dummy.box?raw=true'
   
   config.vm.provider :virtualbox do |vb, override|
     vb.gui = false
