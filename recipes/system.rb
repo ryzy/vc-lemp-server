@@ -105,3 +105,7 @@ ruby_block "speed_up_ssh_login" do
   notifies :restart, "service[sshd]", :immediately
   not_if "grep VAGRANT #{sshd_config}"
 end
+
+# Vagrant user doesn't exist on Rackspace images
+# but some recipes asume the user is present - make sure it exists
+user 'vagrant'
