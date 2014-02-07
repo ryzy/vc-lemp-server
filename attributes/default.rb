@@ -12,8 +12,8 @@ default[:system][:composer_env] = {
 }
 
 # PHP: user/group
-default['app']['group'] = "www-data"
-default['app']['user'] = "www-data"
+default['app']['group'] = 'www'
+default['app']['user'] = 'www'
 # PHP-FPM sock path - see cookbook php-fpm/templates/default/pool.conf.erb
 default['app']['php_socket'] = '/var/run/php-fpm-www.sock'
 # MySQL host name

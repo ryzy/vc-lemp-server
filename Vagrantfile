@@ -40,7 +40,7 @@ Vagrant.configure("2") do |config|
   end
   
   config.vm.provider :rackspace do |rs, override|
-    rs.server_name                = 'vc-lemp-server-new'
+    #rs.server_name                = 'default'
     rs.username                   = ENV['RACKSPACE_CLIENT_ID']
     rs.api_key                    = ENV['RACKSPACE_API_KEY']
     rs.rackspace_region           = :lon
