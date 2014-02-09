@@ -6,7 +6,7 @@ It uses popular other cookbooks (php, mysql, nginx etc - see metadata.rb), makes
 
 #Requirements
 
-- Chef 11.8+
+- Chef 11.8.0
 
 # Platform
 
