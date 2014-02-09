@@ -1,5 +1,5 @@
 # System: extra packages to install initially
-default[:system][:packages] = ['vim','git','mc','htop','links']
+default[:system][:packages] = ['vim','git','mc','htop','links','npm']
 # Root directory for www data
 default[:system][:www_root] = '/var/www'
 # COMPOSER_HOME set when executing composer
