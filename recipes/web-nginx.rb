@@ -80,3 +80,14 @@ template "#{node[:system][:www_root]}/default/index.php" do
   owner node[:app][:user]
   group node[:app][:group]
 end
+
+# Override logrotate so it has correct permissions and rotates every week only
+logrotate_app 'nginx' do
+  cookbook  'logrotate'
+  path      '/var/log/nginx/*.log'
+  frequency 'weekly'
+  rotate    12
+  create    "644 #{node[:app][:user]} #{node[:app][:group]}"
+  postrotate "[ -f /var/run/nginx.pid ] && kill -USR1 `cat /var/run/nginx.pid`"
+  sharedscripts true
+end

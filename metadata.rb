@@ -16,3 +16,4 @@ depends 'php-fpm'         # https://github.com/yevgenko/cookbook-php-fpm
 depends 'composer'        # https://github.com/escapestudios/chef-composer
 depends 'nfs'             # https://github.com/atomic-penguin/cookbook-nfs
 depends 'rvm', '~> 0.9.0' # https://github.com/fnichol/chef-rvm
+depends 'logrotate'       # https://github.com/stevendanna/logrotate
