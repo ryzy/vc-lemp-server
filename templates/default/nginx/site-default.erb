@@ -5,6 +5,11 @@ server {
 
   access_log  <%= node['nginx']['log_dir'] %>/default.access.log;
   error_log   <%= node['nginx']['log_dir'] %>/default.error.log debug;
+	
+	# OpCacheGUI
+	location /OpCacheGUI/public {
+		try_files $uri $uri/ /OpCacheGUI/public/index.php?$args;
+	}
 
   location ~ \.php$ {
     include       fastcgi_params;

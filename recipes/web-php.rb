@@ -83,6 +83,14 @@ link '/var/www/default/phpMyAdmin' do
  group node[:app][:group]
 end
 
+# Install OPCache GUI
+execute "composer create-project --dev --no-interaction --no-progress peehaa/opcachegui" do
+  cwd "#{node[:system][:www_root]}/default"
+  user node['app']['user']
+  group node['app']['group']
+  environment (node['system']['composer_env'])
+  not_if "test -d #{node[:system][:www_root]}/default/opcachegui"
+end
 
 #
 # Fix folders ownership/rights so /var/www is owned/writable by www-data:www-data
