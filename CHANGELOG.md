@@ -1,3 +1,7 @@
+## 0.1.3 (2014-02-10)
+
+- Sass/Compass gems updated to newest versions (3.3.0.rc.3, 1.0.0.alpha.18 respectively)
+
 ## 0.1.2 (2014-02-09)
 
 Features:
