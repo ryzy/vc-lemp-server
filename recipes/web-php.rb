@@ -7,14 +7,18 @@ node[:system][:php_packages].each do |pkg|
   package pkg
 end
 
-# update the main pear channel
-php_pear_channel 'pear.php.net' do
-  action :update
+node[:system][:pear_channels].each do |pear_channel|
+  php_pear_channel pear_channel do
+    action :discover
+  end
 end
-# update the main pecl channel
-php_pear_channel 'pecl.php.net' do
-  action :update
+node[:system][:pear_packages].each do |pkg|
+  php_pear pkg.name do
+    channel pkg.channel
+    action :install
+  end
 end
+
 
 #
 # PHP-FPM

@@ -62,6 +62,12 @@ default['app']['mysql_connection_info'] = {
 #
 # PHP: extra packages/modules to install
 default[:system][:php_packages] = ['php-opcache','php-pecl-gmagick']
+# PEAR channels to add/discover
+default[:system][:pear_channels] = ['pear.php.net','pecl.php.net','pear.symfony.com','pear.phpunit.de']
+default[:system][:pear_packages] = [
+  { name:'PHPUnit', channel:'pear.phpunit.de' }
+]
+
 # PHP tuning
 default['php']['fpm_user']      = node[:app][:user]
 default['php']['fpm_group']     = node[:app][:group]
