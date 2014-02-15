@@ -25,7 +25,6 @@ directory node[:system][:www_root] do
   group node[:app][:group]
   mode 00775
   recursive true
-  not_if "test -d #{node[:system][:www_root]}"
 end
 
 
@@ -66,6 +65,7 @@ end
 # vhost default
 template "#{node['nginx']['dir']}/sites-available/default" do
   source 'nginx/site-default.erb'
+  cookbook 'lemp-server'
   notifies :reload, 'service[nginx]'
 end
 nginx_site 'default' do
