@@ -1,9 +1,8 @@
+# Create www group
 group node[:app][:group] do
-  append true
   gid 80
-  members 'vagrant'
 end
-
+# Create www user
 user node[:app][:user] do
   uid 80
   gid 80
@@ -13,9 +12,16 @@ user node[:app][:user] do
   supports :manage_home=>false
 end
 
+# Vagrant user: :manage action will only do sth if the user is present
 user 'vagrant' do
   gid 80
   action :manage
+end
+group node[:app][:group] do
+  action :manage
+  append true
+  members 'vagrant'
+  only_if 'cat /etc/passwd | grep vagrant'
 end
 
 

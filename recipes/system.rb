@@ -84,28 +84,3 @@ end
       action [ :disable, :stop ]
     end
 end
-
-# Grub update: switch on verbose mode, decrease wait time
-execute "sed -i 's/ rhgb quiet/ /g' /etc/grub.conf /boot/grub/grub.conf"
-execute "sed -i 's/timeout=5/timeout=1/g' /etc/grub.conf /boot/grub/grub.conf"
-
-# Tune SSH
-# It speeds up login by switching off UseDNS and GSSAPIAuthentication options
-service 'sshd'
-sshd_config = '/etc/ssh/sshd_config'
-ruby_block "speed_up_ssh_login" do
-  block do
-    file = Chef::Util::FileEdit.new(sshd_config)
-    file.search_file_replace_line(/UseDNS/, "UseDNS no")
-    file.search_file_replace_line(/GSSAPIAuthentication/, "GSSAPIAuthentication no")
-    file.search_file_replace_line(/X11Forwarding/, "X11Forwarding no")
-    file.insert_line_if_no_match(/Edited by VAGRANT/, '# Edited by VAGRANT')
-    file.write_file
-  end
-  notifies :restart, "service[sshd]", :immediately
-  not_if "grep VAGRANT #{sshd_config}"
-end
-
-# Vagrant user doesn't exist on Rackspace images
-# but some recipes asume the user is present - make sure it exists
-user 'vagrant'
