@@ -4,7 +4,7 @@ maintainer_email 'marcin@ryzycki.com'
 license          'GPL 2'
 description      'Chef cookbook for making universal PHP/Nginx/MySQL server'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version          '0.1.3'
+version          '0.2.0'
 
 depends 'swap'            # https://github.com/sethvargo-cookbooks/swap
 depends 'yum'             # https://github.com/opscode-cookbooks/yum
