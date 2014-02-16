@@ -1,3 +1,21 @@
+## 0.2.0 (2014-02-16)
+
+Features:
+- Test Kitchen tests for all recipes (@see http://kitchen.ci/)
+- man pages installed ;-)
+- vagrant user dependency removed
+- php unit installed
+
+Breaking changes:
+- NFS recipe removed: [Vagrant 1.5 is comming with rsync support](https://github.com/mitchellh/vagrant/blob/master/website/docs/source/v2/synced-folders/rsync.html.md)
+- RVM removed (due to conflicting with chef)
+
+Bugfixes:
+- Fixes for newest Chef 11.10.0
+- Fix for swap on Rackspace
+- Fix for nginx logs permissions
+
+
 ## 0.1.3 (2014-02-10)
 
 - Sass/Compass gems updated to newest versions (3.3.0.rc.3, 1.0.0.alpha.18 respectively)
