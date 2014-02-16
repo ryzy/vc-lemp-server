@@ -43,14 +43,15 @@ end
 r.run_action(:create)
 
 
-# On some systems by default there's no swap (e.g. Digital Ocean CentOS box)
+# On some systems by default there's no swap (DigitalOcean, RS)
 # make sure in that case we create one
 swap_file '/mnt/swap' do
   size      1024    # MBs
-  not_if "cat /etc/fstab | grep swap"
+  only_if 'cat /proc/swaps | wc -l | grep [01]'
 end
 execute "echo '/mnt/swap  swap  swap  defaults  0 0' >> /etc/fstab" do
-  not_if "cat /etc/fstab | grep swap"
+  only_if 'cat /proc/swaps | wc -l | grep [01]'
+  not_if 'cat /etc/fstab | grep /mnt/swaps'
 end
 
 
