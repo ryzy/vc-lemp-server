@@ -6,7 +6,6 @@
 #
 
 include_recipe 'lemp-server::system'           # system basic setup (repos, tweaks)
-include_recipe 'lemp-server::nfs'              # NFS exports
 include_recipe 'lemp-server::web-tools'        # Web tools: ruby, sass, compass etc
 include_recipe 'lemp-server::web-db'           # Web: MySQL
 include_recipe 'lemp-server::web-nginx'        # Web: Nginx server

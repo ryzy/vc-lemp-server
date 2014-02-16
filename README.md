@@ -27,9 +27,6 @@ Invokes all other recipes.
 - Does yum update, yum groupinstall 'Development tools'
 - Switches off some not necessary services
 
-### nfs
-- Exports whole `/var/www` directory, so it's available to mount in your host system during development
-
 ### web-db
 - Installs/tune MySQL
 
