@@ -97,3 +97,4 @@ logrotate_app 'nginx' do
   postrotate "[ -f /var/run/nginx.pid ] && kill -USR1 `cat /var/run/nginx.pid`"
   sharedscripts true
 end
+execute "chown -R #{node['app']['user']}:#{node['app']['group']} /var/log/nginx; chmod 644 /var/log/nginx/*"
