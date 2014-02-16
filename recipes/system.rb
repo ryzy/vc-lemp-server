@@ -42,10 +42,9 @@ r =  yum_repository 'nginx' do
 end
 r.run_action(:create)
 
-#
+
 # On some systems by default there's no swap (e.g. Digital Ocean CentOS box)
 # make sure in that case we create one
-
 swap_file '/mnt/swap' do
   size      1024    # MBs
   not_if "cat /etc/fstab | grep swap"

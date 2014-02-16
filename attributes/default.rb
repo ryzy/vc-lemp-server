@@ -1,5 +1,5 @@
 # System: extra packages to install initially
-default[:system][:packages] = ['vim','git','mc','htop','links','npm']
+default[:system][:packages] = ['vim','man','git','mc','htop','links','npm']
 # Root directory for www data
 default[:system][:www_root] = '/var/www'
 # COMPOSER_HOME set when executing composer
@@ -18,6 +18,9 @@ default['app']['user'] = 'www'
 default['app']['php_socket'] = '/var/run/php-fpm-www.sock'
 # MySQL host name
 default['app']['mysql_host'] = '127.0.0.1'
+
+# YUM cookbook settings
+default['yum']['main']['keepcache'] = true
 
 #
 # MySQL settings

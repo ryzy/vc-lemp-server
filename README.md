@@ -6,7 +6,7 @@ It uses popular other cookbooks (php, mysql, nginx etc - see metadata.rb), makes
 
 #Requirements
 
-- Chef 11.8.0
+- Chef 11.8+
 
 # Platform
 
@@ -35,7 +35,7 @@ Invokes all other recipes.
 
 ### web-php
 - Installs PHP 5.5, PHP-FPM and configures them to work with Nginx
-- Installs composer
+- Installs composer, phpunit
 - Installs phpMyAdmin
 
 ### web-tools
