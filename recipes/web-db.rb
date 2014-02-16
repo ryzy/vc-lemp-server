@@ -1,31 +1,30 @@
 #
 # MySQL server
 #
-include_recipe "mysql::server"
+
+# Do we have already MySQL installed?
+mysql_installed = command?('mysqld_safe')
+
+include_recipe "mysql::server" unless mysql_installed
 
 # MySQL extra config
 template "#{node['mysql']['server']['directories']['confd_dir']}/extra.cnf" do
-  source 'mysql-extra.cnf.erb'
+  source 'mysql/extra.cnf.erb'
 end
 
+# Put .my.cnf for root user, so it can use mysql tool w/o providing credentials
+template "/root/.my.cnf" do
+  source 'mysql/user-my.cnf.erb'
+  variables({ :user => 'root', :pass => node['mysql']['server_root_password'] })
+  mode 0600
+end
 
-#
-# MySQL databases
-#
-include_recipe "database::mysql"
-
-mysql_database 'update root user so it can connect from any host' do
-  connection node['app']['mysql_connection_info']
-  sql        "UPDATE mysql.user SET Host='%' WHERE Host='localhost'"
-  action     :query
-end
-mysql_database 'delete remaining root users' do
-  connection node['app']['mysql_connection_info']
-  sql        "DELETE FROM mysql.user WHERE User='root' AND Host<>'%'"
-  action     :query
-end
-mysql_database 'flush the privileges' do
-  connection node['app']['mysql_connection_info']
-  sql        'flush privileges'
-  action     :query
-end
+# Alter root user so it can access database from anywhere
+# MySQL should be behind firewall anyway, so users who can bypass firewall should be able to login.
+execute "alter root user(s)" do
+  command "mysql --execute=\"
+    UPDATE mysql.user SET Host='%' WHERE User='root' AND Host='localhost';
+    DELETE FROM mysql.user WHERE User='root' AND Host<>'%';
+    FLUSH PRIVILEGES;
+  \""
+end unless mysql_installed # only run it after initial MySQL installation
