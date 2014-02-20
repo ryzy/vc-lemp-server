@@ -56,12 +56,11 @@ end
 
 
 #
-# YUM update
+# YUM update + install dev tools
 #
-execute "yum update -y"
-
-# Install development tools using yum groupinstall
-execute "yum groupinstall -y 'Development tools'"
+execute "yum update -y; yum groupinstall -y 'Development tools';" do
+  action :nothing
+end.run_action(:run)
 
 # Install extra packages (user software etc)
 node[:system][:packages].each do |pkg|
@@ -79,7 +78,7 @@ end
 ['abrt-ccpp', 'abrtd', 'atd', 'auditd', 'blk-availability',
   'haldaemon', 'ip6tables','iptables','kdump',
   'lvm2-monitor','mdmonitor','messagebus','postfix',
-  'sysstat','udev-post','vboxadd-x11'].each do |sv|
+  'sysstat','udev-post'].each do |sv|
     service sv do
       action [ :disable, :stop ]
     end

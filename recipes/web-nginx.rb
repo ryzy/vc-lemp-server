@@ -21,7 +21,7 @@ group node[:app][:group] do
   action :manage
   append true
   members 'vagrant'
-  only_if 'cat /etc/passwd | grep vagrant'
+  only_if 'id -u vagrant &>/dev/null'
 end
 
 

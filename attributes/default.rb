@@ -19,8 +19,6 @@ default['app']['php_socket'] = '/var/run/php-fpm-www.sock'
 # MySQL host name
 default['app']['mysql_host'] = '127.0.0.1'
 
-# YUM cookbook settings
-default['yum']['main']['keepcache'] = true
 
 #
 # MySQL settings
@@ -113,7 +111,6 @@ default['nginx']['default_site_enabled']  = false
 default['nginx']['worker_processes']      = 2
 default['nginx']['realip']['addresses']   = ['0.0.0.0/32']
 default['nginx']['client_max_body_size'] = '99M'
-
 
 
 #

@@ -34,7 +34,7 @@ Vagrant.configure("2") do |config|
     doc.client_id                 = ENV['DIGITAL_OCEAN_CLIENT_ID']
     doc.api_key                   = ENV['DIGITAL_OCEAN_API_KEY']
     doc.region                    = 'Amsterdam 2'
-    doc.image                     = 'CentOS 6.4 x64'
+    doc.image                     = 'CentOS 6.5 x64'
     doc.size                      = '2GB' # and 2vCPU
     override.ssh.private_key_path = '~/.ssh/id_rsa'
   end

@@ -1,7 +1,7 @@
 # user 'vagrant' belongs to 'www' group - make sure it creates files
 # which are also writable to 'www' group
 execute "echo 'umask 002' > /home/vagrant/.bashrc" do
-  only_if "test -d /home/vagrant"
+  only_if "id -u vagrant &>/dev/null"
 end  
 
 # Make files created by 'www' user also writable by its group members

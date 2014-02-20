@@ -5,7 +5,7 @@
 # Do we have already MySQL installed?
 mysql_installed = command?('mysqld_safe')
 
-include_recipe "mysql::server" unless mysql_installed
+include_recipe 'mysql::server' unless mysql_installed
 
 # MySQL extra config
 template "#{node['mysql']['server']['directories']['confd_dir']}/extra.cnf" do
