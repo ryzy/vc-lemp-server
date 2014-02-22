@@ -5,7 +5,9 @@
 # Do we have already MySQL installed?
 mysql_installed = command?('mysqld_safe')
 
+include_recipe 'mysql' unless mysql_installed
 include_recipe 'mysql::server' unless mysql_installed
+include_recipe 'database::mysql' # so mysql_database* works in other cookbooks
 
 # MySQL extra config
 template "#{node['mysql']['server']['directories']['confd_dir']}/extra.cnf" do

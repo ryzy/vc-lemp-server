@@ -114,10 +114,15 @@ default['nginx']['client_max_body_size'] = '99M'
 
 
 #
-# RVM
+# Chruby, ruby_build
 #
-default['rvm']['default_ruby']      = 'ruby-2.0.0-p353'
-default['rvm']['user_default_ruby'] = node['rvm']['default_ruby']
+default['chruby']['version'] = '0.3.8'
+default['chruby']['rubies'] = {
+  '2.0.0-p353' => true,
+}
+default['chruby']['default'] = '2.0.0-p353'
 
-default['rvm']['vagrant']['system_chef_client'] = '/opt/chef/bin/chef-client'
-default['rvm']['vagrant']['system_chef_solo'] = '/opt/chef/bin/chef-solo'
+default['ruby_build']['default_ruby_base_path'] = '/opt/rubies'
+
+# shortcut: default gem binary to use while using gem_package
+default['system']['gem_binary'] = "#{node['ruby_build']['default_ruby_base_path']}/#{node['chruby']['default']}/bin/gem"

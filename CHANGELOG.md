@@ -1,3 +1,12 @@
+## 0.3.0 (2014-02-22)
+
+Features:
+- Ruby 2.0.0 with chruby, ruby_build + serverspec tests
+
+Bugfixes:
+- compatibility with newest Chef 11.10.0
+
+
 ## 0.2.0 (2014-02-16)
 
 Features:
