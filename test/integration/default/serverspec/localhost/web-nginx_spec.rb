@@ -55,4 +55,9 @@ describe "::web-nginx tests" do
     it { should be_grouped_into WWW_GROUP }
     it { should be_mode 644 }
   end
+  
+  describe command("curl --head localhost") do
+    its(:stdout) { should match /200 OK/ }
+    its(:stdout) { should match /nginx/ }      
+  end
 end

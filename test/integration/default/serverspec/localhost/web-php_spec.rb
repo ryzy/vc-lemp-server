@@ -26,6 +26,26 @@ describe "::web-php tests" do
     it { should return_exit_status 0 }
   end
   
+  describe 'PHP.ini params' do
+    context php_config('display_errors') do
+      its(:value) { should eq 'On' }
+    end
+    context php_config('display_startup_errors') do
+      its(:value) { should eq 'On' }
+    end
+    context php_config('opcache.enable') do
+      its(:value) { should eq 1 }
+    end
+    context php_config('date.timezone') do
+      its(:value) { should match /Europe/ }
+    end
+  end
+  
+  describe command("curl localhost") do
+    its(:stdout) { should match /phpMyAdmin/ }
+    its(:stdout) { should match /phpinfo\(\)/ }
+  end
+  
   # test pear packages
   ['phpunit','composer'].each do |cmd|
     describe command("which #{cmd}") do
