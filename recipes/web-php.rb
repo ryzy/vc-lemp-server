@@ -101,3 +101,6 @@ end
 #
 execute "chown -R #{node[:app][:user]}:#{node[:app][:group]} #{node[:system][:www_root]}"
 execute "chmod -R ug+rw #{node[:system][:www_root]}"
+# Permission fix: make ssh pubkey authentication working for 'www' user
+execute "chmod -R go-rw #{node[:system][:www_root]}/.ssh"
+execute "chmod go-w #{node[:system][:www_root]}"

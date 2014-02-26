@@ -29,8 +29,13 @@ end
 directory node[:system][:www_root] do
   owner node[:app][:user]
   group node[:app][:group]
-  mode 00775
+  mode 00755
   recursive true
+end
+directory "#{node[:system][:www_root]}/.ssh" do
+  owner node[:app][:user]
+  group node[:app][:group]
+  mode 00700
 end
 
 
