@@ -2,7 +2,7 @@
 
 Builds complete LEMP stack (Linux, Nginx, MySQL, PHP+PHP-FPM) for further web development.
 
-It uses popular other cookbooks (php, mysql, nginx etc - see metadata.rb), makes them work together, adds a bit of tuning - so it results in complete, almost production ready server for PHP hosted apps (e.g. TYPO3, Drupal).
+It uses popular, mainly Opscode cookbooks (php, mysql, nginx etc - see metadata.rb), makes them work together, adds a bit of spicing and tuning - so it results in a complete, almost production ready server for PHP hosted apps (e.g. Symfony2, TYPO3, Drupal). I say 'almost production ready' because you will secure the setup according to your needs (probably in a separate recipe) + you add recipe dedicated for your app.
 
 #Requirements
 
@@ -27,8 +27,13 @@ Invokes all other recipes.
 - Does yum update, yum groupinstall 'Development tools'
 - Switches off some not necessary services
 
+### ruby
+
+- Install Ruby 2.0, [chruby](https://github.com/postmodern/chruby)
+- Install Bundler and updates RubyGems
+
 ### web-db
-- Installs/tune MySQL
+- Installs/tune MySQL 5.5
 
 ### web-nginx
 - Installs nginx with default vhost
@@ -37,10 +42,10 @@ Invokes all other recipes.
 - Installs PHP 5.5, PHP-FPM and configures them to work with Nginx
 - Installs composer, phpunit
 - Installs phpMyAdmin
+- Installs [OPCache GUI](https://github.com/PeeHaa/OpCacheGUI) to monitor default PHP opcache optimizer
 
 ### web-tools
-- Installs RVM and Ruby 2.0.0
-- Installs common gems (sass, compass)
+- empty for now
 
 ## Author
 
