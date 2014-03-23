@@ -16,6 +16,8 @@ It uses popular, mainly Opscode cookbooks (php, mysql, nginx etc - see metadata.
 
 ```{ 'run_list': ['recipe[lemp-server]'] }```
 
+After the machine is successfully provisioned, you should see welcome page under http://VM_IP/ with links to phpMyAdmin, OpCache GUI and printout from phpinfo().
+
 # Recipes
 
 ### default
