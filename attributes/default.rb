@@ -118,9 +118,9 @@ default['nginx']['client_max_body_size'] = '99M'
 #
 default['chruby']['version'] = '0.3.8'
 default['chruby']['rubies'] = {
-  '2.0.0-p353' => true,
+  '2.0.0-p451' => true,
 }
-default['chruby']['default'] = '2.0.0-p353'
+default['chruby']['default'] = '2.0.0-p451'
 
 default['ruby_build']['default_ruby_base_path'] = '/opt/rubies'
 

@@ -1,3 +1,9 @@
+## 0.3.1 (2014-03-23)
+
+- [FEATURE] Default Ruby updated to 2.0.0-p451
+- [BUGFIX] Temporary fix for Chef::Exceptions::RedirectLimitExceeded while installing chruby
+- README update
+
 ## 0.3.0 (2014-02-22)
 
 Features:
