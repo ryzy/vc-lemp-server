@@ -9,11 +9,13 @@ include_recipe 'mysql::client'
 include_recipe 'mysql::server'
 include_recipe 'database::mysql' # so mysql_database* works in other cookbooks
 
-# Make sure MySQL log dir exists (otherwise MySQL cannot start)
+# MySQL error log is set to be in /var/log/mysql/*
+# Make sure that directory exist (otherwise MySQL cannot start) and delete old log.
 directory node['mysql']['log_dir'] do
   owner 'mysql'
   mode 00755
 end
+execute 'rm -f /var/log/mysqld.log'
 
 # MySQL extra tuning
 template '/etc/mysql/conf.d/tuning.cnf' do
