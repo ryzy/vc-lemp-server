@@ -1,3 +1,10 @@
+## 0.4.0 (2014-04-13)
+
+- [TASK] mysql recipe: migrate to newest version 5.1.x with different architecture
+- [FIX] Ruby: fixed another problems with Chef's ruby when another default system ruby is installed
+- [FEATURE]: composer now installs global packages defined in attributes, in default['system']['composer_global_install'] (e.g. phpunit, phing)
+- [IMROVEMENT] All dependent cookbooks have now version specified, to avoid further problems when this recipe doesn't work due to major changes in them
+
 ## 0.3.1 (2014-03-23)
 
 - [FEATURE] Default Ruby updated to 2.0.0-p451
