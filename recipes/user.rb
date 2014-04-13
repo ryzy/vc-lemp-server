@@ -13,4 +13,7 @@ end
 # PS settings
 template "/etc/profile.d/ps.sh" do
   source 'user/profile_ps.erb'
+# Add composer vendor path to PATH
+execute "echo 'PATH=~/.composer/vendor/bin:$PATH' >> #{bash_profile}" do
+  not_if "grep 'PATH=~/.composer/vendor/bin' #{bash_profile}"
 end
