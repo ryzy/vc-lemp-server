@@ -22,25 +22,7 @@ default['mysql']['server_debian_password'] = node['mysql']['server_root_password
 # MySQL tuning
 default['mysql']['remove_anonymous_users']          = true
 default['mysql']['remove_test_database']            = true
-default['mysql']['bind_address']                    = '0.0.0.0'
-default['mysql']['tunable']['character-set-server'] = 'utf8'
-default['mysql']['tunable']['collation-server']     = 'utf8_unicode_ci'
-default['mysql']['tunable']['max_connections']      = '50'
-default['mysql']['tunable']['max_allowed_packet']   = '32M'
-default['mysql']['tunable']['log_error']                    = '/var/log/mysql/error.log'
-default['mysql']['tunable']['log_warnings']                 = 2
-default['mysql']['tunable']['log_queries_not_using_index']  = true
-default['mysql']['tunable']['open-files-limit']     = '16384'
-default['mysql']['tunable']['query_cache_size']     = '128M'
-default['mysql']['tunable']['thread_cache_size']    = 16
-default['mysql']['tunable']['table_cache']          = '2048'
-default['mysql']['tunable']['table_open_cache']     = node['mysql']['tunable']['table_cache']
-default['mysql']['tunable']['sort_buffer_size']     = '2M'
-default['mysql']['tunable']['read_buffer_size']     = '1M'
-default['mysql']['tunable']['read_rnd_buffer_size'] = '8M'
-default['mysql']['tunable']['join_buffer_size']     = '1M'
-default['mysql']['tunable']['tmp_table_size']       = '64M'
-default['mysql']['tunable']['max_heap_table_size']  = node['mysql']['tunable']['tmp_table_size']
+default['mysql']['log_dir']                         = '/var/log/mysql'
 
 # MySQL connection info to use with 'mysql' recipe
 default['app']['mysql_connection_info'] = {
