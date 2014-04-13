@@ -1,6 +1,3 @@
-Vagrant.require_plugin "vagrant-berkshelf"
-Vagrant.require_plugin "vagrant-omnibus"
-
 Vagrant.configure("2") do |config|
   config.ssh.username    = 'vagrant'
   config.vm.boot_timeout = 120

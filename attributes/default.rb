@@ -129,7 +129,6 @@ default['chruby']['rubies'] = {
   '2.0.0-p451' => true,
 }
 default['chruby']['default'] = '2.0.0-p451'
-
 default['ruby_build']['default_ruby_base_path'] = '/opt/rubies'
 
 # shortcut: default gem binary to use while using gem_package
