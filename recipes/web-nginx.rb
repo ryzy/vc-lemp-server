@@ -103,3 +103,8 @@ logrotate_app 'nginx' do
   sharedscripts true
 end
 execute "chown -R #{node['app']['user']}:#{node['app']['group']} /var/log/nginx; chmod 644 /var/log/nginx/*"
+
+# Tidy up /var/www, clean-up some artefacts:
+execute 'rm -rf /var/www/cgi-bin /var/www/html /var/www/icons' do
+  only_if 'test -d /var/www/cgi-bin'
+end
