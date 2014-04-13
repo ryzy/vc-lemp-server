@@ -49,6 +49,20 @@ Invokes all other recipes.
 ### web-tools
 - empty for now
 
+## Testing
+
+Tests are written in [serverspec](serverspec.org) and runnin using [KitchenCI](http://kitchen.ci/). 
+
+Currently configured providers: Vagrant (using default providers), Rackspace, DigitalOcean. You 
+
+Usage:
+
+```kitchen list```
+
+```kitchen test```
+
+
+
 ## Author
 
 Author: ryzy (<marcin@ryzycki.com>)
