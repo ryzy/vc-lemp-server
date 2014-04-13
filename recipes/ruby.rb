@@ -5,7 +5,16 @@ node['chruby']['rubies'].each do |rv, install|
   ruby_build_ruby rv
 end
 
-include_recipe 'chruby'
+chruby_installed = command?('chruby-exec')
+include_recipe 'chruby' unless chruby_installed
+
+# Fix: In some cases chruby sets also GEM_HOME, which affects chef's ruby.
+# Make sure that variable is not set (as it's not essential for the rest of the system).
+chruby_sh_file = File.join(node['chruby']['sh_dir'], node['chruby']['sh_name'])
+execute "echo 'unset GEM_HOME' >> #{chruby_sh_file}" do
+  not_if "grep 'unset GEM_HOME' #{chruby_sh_file}"
+end
+
 
 # .gemrc
 file '/etc/gemrc' do
@@ -13,7 +22,7 @@ file '/etc/gemrc' do
   owner   'root'
   group   'root'
   mode    '0644'
-end
+end unless chruby_installed # don't override file content during consequent provisioning
 
 # Update to the latest RubyGems version
 execute "#{node['system']['gem_binary']} update --system" do
