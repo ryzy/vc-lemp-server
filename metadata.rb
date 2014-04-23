@@ -4,7 +4,7 @@ maintainer_email 'marcin@ryzycki.com'
 license          'GPL 2'
 description      'Chef cookbook for making universal PHP/Nginx/MySQL server'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version          '0.4.0'
+version          '0.5.0'
 
 
 depends 'ark', '~> 0.8.0'           # https://github.com/opscode-cookbooks/ark

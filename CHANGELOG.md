@@ -1,3 +1,8 @@
+## 0.5.0 (2014-04-23)
+
+- [IMROVEMENT] Update to Vagrant 1.5.x (since Berkshelf 3 finally works with it)
+- [IMROVEMENT] All boxes in Vagrantfile replaced with VagrantCloud locations
+
 ## 0.4.0 (2014-04-13)
 
 - [TASK] mysql recipe: migrate to newest version 5.1.x with different architecture

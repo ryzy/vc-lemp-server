@@ -1,30 +1,30 @@
+Vagrant.require_version '>= 1.5.2'
+
 Vagrant.configure('2') do |config|
-  config.ssh.username    = 'vagrant'
-  config.vm.boot_timeout = 120
-  
+  config.ssh.username = 'vagrant'
+  config.ssh.private_key_path = [
+    '~/.ssh/id_rsa',
+    '~/.vagrant.d/insecure_private_key'
+  ]
   config.vm.hostname = 'vc-lemp-server'
   
   # In global config provide just dummy box - all providers use their own boxes and needs to be overriden
   config.vm.box = 'dummy'
-  config.vm.box_url = 'https://github.com/ryzy/vc-lemp-server/blob/master/dummy.box?raw=true'
   
   config.vm.provider :virtualbox do |vb, override|
+    override.vm.box = 'chef/centos-6.5'
+    override.vm.network :private_network, ip: '192.168.88.8'
+#    override.vbguest.auto_update = true
     vb.gui = false
     vb.customize ['modifyvm', :id, '--memory', '1024']
     vb.customize ['modifyvm', :id, '--cpus', '4']
-    override.vm.network :private_network, ip: '192.168.88.8'
-    override.vbguest.auto_update = true
-    override.vm.box = 'opscode-centos-6.5'
-    override.vm.box_url = 'http://opscode-vm-bento.s3.amazonaws.com/vagrant/virtualbox/opscode_centos-6.5_chef-provisionerless.box'
   end
   
   config.vm.provider :parallels do |prl, override|
-    # prl.name = 'vc-parallels'
+    override.vm.box = 'parallels/centos-6.5'
     prl.customize ['set', :id, '--memsize', '1024']
     prl.customize ['set', :id, '--cpus', '4']
-    prl.customize ['set', :id, '--adaptive-hypervisor', 'on']
-    override.vm.box = 'centos-6.5-x86_64-minimal'
-    override.vm.box_url = 'https://drive.google.com/file/d/0B1zkUS5UKRCscktsV01uSzk1WEU/edit?usp=sharing'
+    prl.customize ['set', :id, '--adaptive-hypervisor', 'on']    
   end
   
   config.vm.provider :digital_ocean do |doc, override|
@@ -33,10 +33,11 @@ Vagrant.configure('2') do |config|
     doc.region                    = 'Amsterdam 2'
     doc.image                     = 'CentOS 6.5 x64'
     doc.size                      = '2GB' # and 2vCPU
-    override.ssh.private_key_path = '~/.ssh/id_rsa'
   end
   
   config.vm.provider :rackspace do |rs, override|
+    override.ssh.username         = 'root'
+    override.ssh.pty              = true
     #rs.server_name                = 'default'
     rs.username                   = ENV['RACKSPACE_CLIENT_ID']
     rs.api_key                    = ENV['RACKSPACE_API_KEY']
@@ -45,9 +46,6 @@ Vagrant.configure('2') do |config|
     rs.image                      = 'CentOS 6.5'
     rs.disk_config                = 'AUTO'
     rs.public_key_path            = '~/.ssh/id_rsa.pub'
-    override.ssh.private_key_path = '~/.ssh/id_rsa'
-    override.ssh.username         = 'root'
-    override.ssh.pty              = true
   end
   
   config.omnibus.chef_version = '11.10.0'
