@@ -1,8 +1,8 @@
-Vagrant.configure("2") do |config|
+Vagrant.configure('2') do |config|
   config.ssh.username    = 'vagrant'
   config.vm.boot_timeout = 120
   
-  config.vm.hostname = "vc-lemp-server"
+  config.vm.hostname = 'vc-lemp-server'
   
   # In global config provide just dummy box - all providers use their own boxes and needs to be overriden
   config.vm.box = 'dummy'
@@ -10,8 +10,8 @@ Vagrant.configure("2") do |config|
   
   config.vm.provider :virtualbox do |vb, override|
     vb.gui = false
-    vb.customize ["modifyvm", :id, "--memory", "1024"]
-    vb.customize ["modifyvm", :id, "--cpus", "4"]
+    vb.customize ['modifyvm', :id, '--memory', '1024']
+    vb.customize ['modifyvm', :id, '--cpus', '4']
     override.vm.network :private_network, ip: '192.168.88.8'
     override.vbguest.auto_update = true
     override.vm.box = 'opscode-centos-6.5'
@@ -19,10 +19,10 @@ Vagrant.configure("2") do |config|
   end
   
   config.vm.provider :parallels do |prl, override|
-    # prl.name = "vc-parallels"
-    prl.customize ["set", :id, "--memsize", "1024"]
-    prl.customize ["set", :id, "--cpus", "4"]
-    prl.customize ["set", :id, "--adaptive-hypervisor", "on"]
+    # prl.name = 'vc-parallels'
+    prl.customize ['set', :id, '--memsize', '1024']
+    prl.customize ['set', :id, '--cpus', '4']
+    prl.customize ['set', :id, '--adaptive-hypervisor', 'on']
     override.vm.box = 'centos-6.5-x86_64-minimal'
     override.vm.box_url = 'https://drive.google.com/file/d/0B1zkUS5UKRCscktsV01uSzk1WEU/edit?usp=sharing'
   end
