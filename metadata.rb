@@ -16,6 +16,6 @@ depends 'mysql', '~> 5.1.0'         # https://github.com/opscode-cookbooks/mysql
 depends 'database', '~> 2.1.6'      # https://github.com/opscode-cookbooks/database
 depends 'nginx', '~> 2.6.2'         # https://github.com/opscode-cookbooks/nginx
 depends 'php', '~> 1.4.6'           # https://github.com/opscode-cookbooks/php
-depends 'php-fpm', '~> 0.6.3'       # https://github.com/yevgenko/cookbook-php-fpm
 depends 'composer', '~> 1.0.0'      # https://github.com/escapestudios/chef-composer
 depends 'logrotate', '~> 1.5.0'     # https://github.com/stevendanna/logrotate
+depends 'php-fpm', '0.6.7'          # https://github.com/yevgenko/cookbook-php-fpm

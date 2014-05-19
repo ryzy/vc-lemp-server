@@ -73,11 +73,16 @@ default['php']['directives'] = { # extra directives added to the end of php.ini
 # PHP-FPM settings + pools
 default['php-fpm']['user'] = node['php']['fpm_user']
 default['php-fpm']['group'] = node['php']['fpm_group']
+default['php-fpm']['listen_owner'] = node['php']['fpm_user']
+default['php-fpm']['listen_group'] = node['php']['fpm_group']
+default['php-fpm']['security_limit_extensions'] = '.php' # .php .php3 .php4 .php5
 default['php-fpm']['pools'] = [
   {
     :name => 'www',
     :user => node['php-fpm']['user'],
     :group => node['php-fpm']['group'],
+    :listen_owner => node['php-fpm']['user'],
+    :listen_group => node['php-fpm']['group'],
     :max_children => 10,
     :start_servers => 2,
     :min_spare_servers => 2,
