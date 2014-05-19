@@ -1,3 +1,8 @@
+## 0.5.1 (2014-05-19)
+
+- [BUGFIX] php-fpm socket permissions - after changes in php-fpm cookbook
+- [IMPROVEMENT] strict versions defined for each cookbook to avoid potential conflicts/bugs caused by newer versions of cookbooks
+
 ## 0.5.0 (2014-04-23)
 
 - [IMROVEMENT] Update to Vagrant 1.5.x (since Berkshelf 3 finally works with it)
