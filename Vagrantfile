@@ -1,4 +1,4 @@
-Vagrant.require_version '>= 1.5.2'
+Vagrant.require_version '>= 1.6.2'
 
 Vagrant.configure('2') do |config|
   config.ssh.username = 'vagrant'
@@ -24,7 +24,7 @@ Vagrant.configure('2') do |config|
     override.vm.box = 'parallels/centos-6.5'
     prl.customize ['set', :id, '--memsize', '1024']
     prl.customize ['set', :id, '--cpus', '4']
-    prl.customize ['set', :id, '--adaptive-hypervisor', 'on']    
+    prl.customize ['set', :id, '--adaptive-hypervisor', 'on']
   end
   
   config.vm.provider :digital_ocean do |doc, override|
