@@ -4,9 +4,9 @@ Builds complete LEMP stack (Linux, Nginx, MySQL, PHP+PHP-FPM) for further web de
 
 It uses popular, mainly Opscode cookbooks (php, mysql, nginx etc - see metadata.rb), makes them work together, adds a bit of spicing and tuning - so it results in a complete, almost production ready server for PHP hosted apps (e.g. Symfony2, TYPO3, Drupal). I say 'almost production ready' because you will secure the setup according to your needs (probably in a separate recipe) + you add recipe dedicated for your app.
 
-## UPDATE
+## UPDATE - THIS REPO IS OBSOLETE!
 
-**Nowadays I advocate for running your applications inside Docker containers.** Please have a look at my Docker repositories here: https://github.com/million12?query=docker . This repository is **not** maintained any longer.
+**Nowadays I advocate running my applications inside Docker containers.** Please have a look at my Docker repositories here: https://github.com/million12?query=docker . This repository is **no longer maintained**.
 
 ---
 
